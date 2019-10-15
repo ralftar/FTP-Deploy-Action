@@ -11,11 +11,12 @@ WDEFAULT_ARGS=${ARGS:-""}
 WDEFAULT_METHOD=${METHOD:-"ftp"}
 WDEFAULT_SETTIMESTAMPS=${DIFFS_ONLY:-true}
 
-IFS=$'\n'
-list_of_files=($(git ls-files | sort))
-unset IFS
 if $WDEFAULT_SETTIMESTAMPS; then
 	start=`date +%s`
+	
+	IFS=$'\n'
+	list_of_files=$(git ls-files | sort)
+	unset IFS
 	
 	echo "Using Local git log to restore last_modified dates on files"
 
