@@ -11,7 +11,7 @@ LABEL "com.github.actions.icon"="upload-cloud"
 LABEL "com.github.actions.color"="orange"
 
 RUN apk update
-RUN apk add openssh sshpass lftp git
+RUN apk add openssh sshpass lftp git bash
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod 777 entrypoint.sh
