@@ -17,9 +17,9 @@ if [ $WDEFAULT_SETTIMESTAMPS = "true" ]; then
 	echo "Using Local git log to restore last_modified dates on files"
 	
 	IFS=$'\n'
-	list_of_files=$(git ls-files | sort)
+	list_of_files=($(git ls-files | sort))
 	unset IFS
-
+	
 	echo "|----------------------------------------------------|-------------------------------|"
 	printf "| %-50.50s | %10s |%b\n" "FileName" "New Timestamp                "
 	echo "|----------------------------------------------------|-------------------------------|"
