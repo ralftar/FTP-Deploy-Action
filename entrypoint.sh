@@ -9,16 +9,16 @@ WDEFAULT_LOCAL_DIR=${LOCAL_DIR:-"."}
 WDEFAULT_REMOTE_DIR=${REMOTE_DIR:-"."}
 WDEFAULT_ARGS=${ARGS:-""}
 WDEFAULT_METHOD=${METHOD:-"ftp"}
-WDEFAULT_SETTIMESTAMPS=${DIFFS_ONLY:-true}
+WDEFAULT_SETTIMESTAMPS=${DIFFS_ONLY:-"true"}
 
-if $WDEFAULT_SETTIMESTAMPS; then
+if [ $WDEFAULT_SETTIMESTAMPS = "true" ]; then
 	start=`date +%s`
+	
+	echo "Using Local git log to restore last_modified dates on files"
 	
 	IFS=$'\n'
 	list_of_files=$(git ls-files | sort)
 	unset IFS
-	
-	echo "Using Local git log to restore last_modified dates on files"
 
 	echo "|----------------------------------------------------|-------------------------------|"
 	printf "| %-50.50s | %10s |%b\n" "FileName" "New Timestamp                "
@@ -37,8 +37,10 @@ if $WDEFAULT_SETTIMESTAMPS; then
 	  touch -m -d $TIME "$file_name"
 	done
 	echo "|----------------------------------------------------|-------------------------------|"
+	
 	end=`date +%s`
 	runtime=$((end-start))
+	
 	echo "Updating last_modified dates took $runtime seconds"
 fi;
 
