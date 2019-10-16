@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # "to avoid continuing when errors or undefined variables are present"
 set -eu
