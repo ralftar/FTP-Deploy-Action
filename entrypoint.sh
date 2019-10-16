@@ -12,8 +12,6 @@ WDEFAULT_METHOD=${METHOD:-"ftp"}
 WDEFAULT_SETTIMESTAMPS=${DIFFS_ONLY:-"false"}
 
 if [ $WDEFAULT_SETTIMESTAMPS = "true" ]; then
-	start=`date +%s`
-	
 	echo "Using Local git log to restore last_modified dates on files"
 	
 	IFS=$'\n'
@@ -37,9 +35,6 @@ if [ $WDEFAULT_SETTIMESTAMPS = "true" ]; then
 	  touch -m -d $TIME "$file_name"
 	done
 	echo "|----------------------------------------------------|-------------------------------|"
-	
-	end=`date +%s`
-	runtime=$((end-start))
 	
 	echo "Updating last_modified dates took $runtime seconds"
 fi;
