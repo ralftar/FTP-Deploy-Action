@@ -26,7 +26,11 @@ inputs:
     description: 'The remote folder to copy to, deafults to root FTP folder (I recommend you configure this on your server side instead of here)'
     required: false
     default: ""
-  ARGS:
+  diffs_only:
+    description: 'Only publish files that have changed since the last commit'
+    required: false
+    default: "false"
+  args:
     description: 'Passes through options into lftp'
     required: false
     default: ""
@@ -41,6 +45,8 @@ runs:
     - ${{ inputs.port }}
     - ${{ inputs.local_dir }}
     - ${{ inputs.remote_dir }}
+    - ${{ inputs.diffs_only }}
+    - ${{ inputs.args }}
 branding:
   icon: 'upload-cloud'  
   color: 'orange'
