@@ -13,4 +13,4 @@ jobs:
       with:
         ftp-server: ftp://ftp.samkirkland.com/
         ftp-username: ${{ secrets.ftp_username }}
-        ftp-password: ${{ secrets.ftp_password }}
+        
