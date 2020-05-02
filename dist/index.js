@@ -670,8 +670,8 @@ const util_1 = __webpack_require__(669);
 const writeFileAsync = util_1.promisify(fs_1.default.writeFile);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
-        const userArguments = getUserArguments();
         try {
+        const userArguments = getUserArguments();
             yield configureHost(userArguments);
             yield syncFiles(userArguments);
             console.log("✅ Deploy Complete");
