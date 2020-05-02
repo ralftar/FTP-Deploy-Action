@@ -8,6 +8,7 @@ jobs:
     - uses: actions/checkout@master
       with:
         fetch-depth: 2
+        ref: 'throw_bug'
     - name: FTP-Deploy-Action
       uses: SamKirkland/FTP-Deploy-Action@master
       with:
